@@ -13,9 +13,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus sollicitudin, pretium velit sit amet, facilisis orci. Aliquam nec feugiat turpis. Cras a nibh sit amet orci mattis sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet massa at condimentum cursus. Aliquam eu sagittis eros. Suspendisse lacinia fringilla pellentesque. Nullam sodales nisi vitae egestas commodo. Nullam tincidunt neque in euismod malesuada. Aliquam dui neque, porttitor ac est at, vulputate pellentesque orci. Sed ultrices pharetra magna, sit amet viverra libero sagittis non. Integer nunc arcu, viverra nec metus laoreet, venenatis lacinia lectus. Vestibulum pulvinar ultricies sapien, sit amet commodo felis euismod nec. In malesuada neque vitae nibh luctus maximus. Nam volutpat, erat sed fringilla facilisis, turpis lectus finibus velit, nec tristique ipsum sem vel lacus.'
 		},
 
-		movies: {
-			title: 'movies',
-			items: [
+		movies:  [
 				{ title: "Guardians of the Galaxy", releaseDate: "15 September 2014", description: "description here", image: "https://pbs.twimg.com/profile_images/496363117681455106/X2aE1GcC_reasonably_small.jpeg" },
 				{ title: "Guardians of the Galaxy", releaseDate: "15 September 2014", description: "description here", image: "https://pbs.twimg.com/profile_images/496363117681455106/X2aE1GcC_reasonably_small.jpeg" },
 				{ title: "Guardians of the Galaxy", releaseDate: "15 September 2014", description: "description here", image: "https://pbs.twimg.com/profile_images/496363117681455106/X2aE1GcC_reasonably_small.jpeg" },
@@ -23,7 +21,6 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 				{ title: "Guardians of the Galaxy", releaseDate: "15 September 2014", description: "description here", image: "https://pbs.twimg.com/profile_images/496363117681455106/X2aE1GcC_reasonably_small.jpeg" },
 				{ title: "Guardians of the Galaxy", releaseDate: "15 September 2014", description: "description here", image: "https://pbs.twimg.com/profile_images/496363117681455106/X2aE1GcC_reasonably_small.jpeg" }
 			]
-		}
 	};
 
 	//image content
@@ -87,6 +84,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		init: function(){
 			MOVIEAPP.sections.about();
 			MOVIEAPP.sections.movies();
+			MOVIEAPP.directives();
 		},
 		about: function(){
 			Transparency.render(qwery('[data-route=about]')[0], MOVIEAPP.content.about);
