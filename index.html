@@ -9,34 +9,44 @@
         <link rel="author" href="humans.txt">
     </head>
     <body>
-		<main id="content">
-			<section data-route="about">
-				<section>
-					<header>
-						<h1></h1>
 
-						<p></p>
+
+    	<header>
+			<nav>
+				<ul>
+					<li><a href="#/about">about</a></li>
+					<li><a href="#/movies">movies</a></li>
+				</ul>
+			</nav>
+		</header>
+
+
+		<main id="content">
+			<section data-route="about" class="active">
+					<header>
+						<h1 data-bind="title"></h1>
+
+						<p data-bind="description"></p>
 						<p></p>
 						<p></p>
 						<p></p>
 
 					</header>
-				</section>
 			</section>
 
 			<section data-route="movies">
 				<h1></h1>	
-				<article>
+				<article data-bind="items">
 					<header>
-						<h1></h1>
-						<em><time></time></em>
+						<h1 data-bind="title"></h1>
+						<em><time data-bind="releaseDate"></time></em>
 					</header>
 
 					<figure>
-						<img src="" alt="">
+						<img class="image">
 					</figure>
 
-					<p></p>
+					<p data-bind="description"></p>
 				</article>
 			
 				<article>
@@ -81,15 +91,6 @@
 			
 			</section>
 		</main>
-		
-		<header>
-			<nav>
-				<ul>
-					<li><a href="#">about</a></li>
-					<li><a href="#">movies</a></li>
-				</ul>
-			</nav>
-		</header>
 
 
 		<script src="static/js/lib/routie.min.js"></script>
