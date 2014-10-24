@@ -35,14 +35,31 @@
 			</section>
 
 			<section data-route="movies">
-				<h1></h1>	
 				<article>
 					<header>
 						<h1 data-bind="title"></h1>
-						<em><time data-bind="releaseDate"></time></em>
+						<em><time data-bind="release_date"></time></em>
 					</header>
 						<img class="image">
-					<p data-bind="description"></p>
+					<p data-bind="simple_plot"></p>
+
+					<a href="" data-bind="details">More info</a>
+				</article>
+			
+
+		
+			</section>
+
+			<section data-route="movie-details">
+				<article>
+					<header>
+						<h1 data-bind="title"></h1>
+						<h2 data-bind="reviews">Review score: <span data-bind="score"></span></h2>
+						<p>Release date: <time data-bind="release_date"></time></p>
+					</header>
+						<img data-bind="cover" />
+					<p><span>Plot: </span><span data-bind="plot"></span></p>
+				
 				</article>
 			</section>
 		</main>
@@ -50,6 +67,7 @@
 
 		<script src="static/js/lib/routie.min.js"></script>
 		<script src="static/js/lib/ready.min.js"></script>
+		<script src="static/js/lib/modernizr.js"></script>
 		<script src="static/js/lib/qwery.min.js"></script>
 		<script src="static/js/lib/transparancy.min.js"></script>
         <script src="static/js/app.js"></script>
