@@ -108,7 +108,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 			details: {
 				href: function() {
-                    return '#movies/' + (this.id - 1); 
+                    return '#/movies/' + (this.id - 1); 
 			}
 		}
 	};
@@ -132,7 +132,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 					MOVIEAPP.content.movies;
 				},
 
-				'#movies/:id': function(id) {
+				'/movies/:id': function(id) {
 					MOVIEAPP.sections.movie('movie-details')
 					console.log("route movie details");
 
@@ -142,10 +142,13 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			});
 		},
 
-		change: function () {
+		change: function (route) {
 			var route = window.location.hash.slice(2),
 			sections = qwery('section[data-route]'),
 			section = qwery('[data-route=' + route + ']')[0];
+
+			/*sections = qwery('section'),
+			section = qwery('[data-route=' + route + ']')[0];*/
 
 			//Show the section that is active(has the active class), hide the others
 			if (section) {
@@ -179,9 +182,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			MOVIEAPP.router.change();
 		},
 
-		movie: function(id){
+		movie: function(route, id){
 
-			MOVIEAPP.content.movies = JSON.parse(localStorage.getItem('movies'));
+			MOVIEAPP.content.movies = JSON.parse(localStorage.getItem('movies'))[id];
 			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.movie, MOVIEAPP.directives);
 			MOVIEAPP.router.change();
 		}
