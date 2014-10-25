@@ -39,6 +39,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 				MOVIEAPP.xhr.trigger('GET', 'http://dennistel.nl/movies', function (response) {
 					localStorage.setItem('movies', response);
+					localStorage.setItem('film', response);
 					MOVIEAPP.router.init();
 					console.log("localStorage set");
 				});
@@ -72,9 +73,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 		},
 
-		movie: function(id) {
-				console.log('create movie model', id);
-			}
+		film: {
+
+		}
 	};
 
 	//xhr object for API
@@ -133,10 +134,10 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 				},
 
 				'/movies/:id': function(id) {
-					MOVIEAPP.sections.movie('movie-details')
-					console.log("route movie details");
+					MOVIEAPP.sections.movie('film', id);
+					console.log("route movie id");
 
-					MOVIEAPP.content.movie;
+					MOVIEAPP.content.film;
 				}
 
 			});
@@ -184,8 +185,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 		movie: function(route, id){
 
-			MOVIEAPP.content.movies = JSON.parse(localStorage.getItem('movies'))[id];
-			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.movie, MOVIEAPP.directives);
+			MOVIEAPP.content.film = JSON.parse(localStorage.getItem('movies'))[id];
+			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.film, MOVIEAPP.directives);
 			MOVIEAPP.router.change();
 		}
 	};
