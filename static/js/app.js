@@ -73,10 +73,30 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 		},
 
-		film: {
+		film: function(id) {
+            return  movieAPP.underscore.manipulateData(id);
+        },
 
-		}
 	};
+
+	MOVIEAPP.underscore = {
+
+		manipulateData: function() {
+
+            var data = JSON.parse(localStorage.getItem('movies'));
+
+            //map reduce
+            _.map(data, function (movie, i){
+                    movie.reviews   = _.reduce(movie.reviews,   function(memo, review){   return memo + review.score; }, 0) / movie.reviews.length;
+                    //movie.directors = _.reduce(movie.directors, function(memo, director){ return memo + director.name + ' '; }, '');
+                    //movie.actors    = _.reduce(movie.actors,    function(memo, actor){    return memo + actor.actor_name + ', ';}, '');
+                    //return movie;
+                    console.log(film.reviews)
+
+                     return(this.filter(data));
+                })  
+        }
+	}
 
 	//xhr object for API
 	MOVIEAPP.xhr = {
@@ -136,7 +156,6 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 				'/movies/:id': function(id) {
 					MOVIEAPP.sections.movie('film', id);
 					console.log("route movie id");
-
 					MOVIEAPP.content.film;
 				}
 
@@ -144,7 +163,11 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		},
 
 		change: function (route) {
-			var route = window.location.hash.slice(2),
+			
+			// anders de route uit de URL te houden.
+			if(!route)
+				var route = window.location.hash.slice(2);
+
 			sections = qwery('section[data-route]'),
 			section = qwery('[data-route=' + route + ']')[0];
 
@@ -187,7 +210,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 			MOVIEAPP.content.film = JSON.parse(localStorage.getItem('movies'))[id];
 			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.film, MOVIEAPP.directives);
-			MOVIEAPP.router.change();
+			MOVIEAPP.router.change('movie-details');
 		}
 	};
 
