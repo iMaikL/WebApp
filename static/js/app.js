@@ -68,13 +68,16 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus sollicitudin, pretium velit sit amet, facilisis orci. Aliquam nec feugiat turpis. Cras a nibh sit amet orci mattis sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet massa at condimentum cursus. Aliquam eu sagittis eros. Suspendisse lacinia fringilla pellentesque. Nullam sodales nisi vitae egestas commodo. Nullam tincidunt neque in euismod malesuada. Aliquam dui neque, porttitor ac est at, vulputate pellentesque orci. Sed ultrices pharetra magna, sit amet viverra libero sagittis non. Integer nunc arcu, viverra nec metus laoreet, venenatis lacinia lectus. Vestibulum pulvinar ultricies sapien, sit amet commodo felis euismod nec. In malesuada neque vitae nibh luctus maximus. Nam volutpat, erat sed fringilla facilisis, turpis lectus finibus velit, nec tristique ipsum sem vel lacus.'
 		},
 
-		movies: {
+		movies: function (){
+            var genre = '';
 
-		},
+            return  MOVIEAPP.underscore.manipulateData();
 
-		film: {
+        },
 
-        },
+        film: function(id) {
+            return  MOVIEAPP.underscore.manipulateData(id);
+        },
 
         moviesGenre: function(genre){
             console.log('in moviesGenre', genre);
@@ -94,8 +97,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                     movie.reviews   = _.reduce(movie.reviews,   function(memo, review){   return memo + review.score; }, 0) / movie.reviews.length;
                     //movie.directors = _.reduce(movie.directors, function(memo, director){ return memo + director.name + ' '; }, '');
                     //movie.actors    = _.reduce(movie.actors,    function(memo, actor){    return memo + actor.actor_name + ', ';}, '');
-                    //return movie;
+                    return movie;
                 })  
+
             console.log('movie.reviews', data);
             return(this.filter(data, genre));
         },
@@ -244,6 +248,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			Transparency.render(qwery('[data-route=about]')[0], MOVIEAPP.content.about);
 			MOVIEAPP.router.change();
 		},
+
 		movies: function(route){
 
 			MOVIEAPP.content.movies = JSON.parse(localStorage.getItem('movies'));
@@ -253,19 +258,21 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 		movie: function(route, id){
 
-			MOVIEAPP.content.film = JSON.parse(localStorage.getItem('movies'))[id];
-			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.film, MOVIEAPP.directives);
+			//tegenstrijdig, ik haalde een oude 
+			//MOVIEAPP.content.film = JSON.parse(localStorage.getItem('movies'))[id];
+			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.film()[id], MOVIEAPP.directives);
 			MOVIEAPP.router.change('movie-details');
 		},
 
 		film: function(id) {
             return  MOVIEAPP.underscore.manipulateData(id);
         },
+
         //render the genres
         movieGenre: function(route,genre) {
             console.log('in renderMoviesGenre genre =', genre);
             console.log('render details');
-            Transparency.render(qwery('[data-route=genre]')[0], MOVIEAPP.content.moviesGenre(genre), MOVIEAPP.directives);
+            Transparency.render(qwery('[data-route=movies]')[0], MOVIEAPP.content.moviesGenre(genre), MOVIEAPP.directives);
             MOVIEAPP.router.change(route);
 	}
 };
