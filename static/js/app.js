@@ -74,9 +74,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		},
 
 		film: function(id) {
-            return  movieAPP.underscore.manipulateData(id);
+            return  MOVIEAPP.underscore.manipulateData(id);
         }
-
 	};
 
 	MOVIEAPP.underscore = {
@@ -91,7 +90,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                     //movie.directors = _.reduce(movie.directors, function(memo, director){ return memo + director.name + ' '; }, '');
                     //movie.actors    = _.reduce(movie.actors,    function(memo, actor){    return memo + actor.actor_name + ', ';}, '');
                     //return movie;
-                    console.log('film.reviews');
+                    console.log('movie.reviews');
                 })  
         }
 	};
