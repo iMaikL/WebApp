@@ -39,7 +39,6 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 				MOVIEAPP.xhr.trigger('GET', 'http://dennistel.nl/movies', function (response) {
 					localStorage.setItem('movies', response);
-					localStorage.setItem('film', response);
 					MOVIEAPP.router.init();
 					console.log("localStorage set");
 				});
@@ -86,7 +85,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 	MOVIEAPP.underscore = {
 
-		manipulateData: function() {
+		manipulateData: function(genre) {
 
             var data = JSON.parse(localStorage.getItem('movies'));
 
@@ -98,7 +97,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                     //return movie;
                 })  
             console.log('movie.reviews', data);
-            return data;
+            return(this.filter(data, genre));
         },
 
 		    filter: function (data, genre) {
@@ -108,8 +107,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
             //console.log(splitHash[2]);
             //console.log(splitHash[2] === "genre");
             console.log('in filter data =', data);
-            var input = document.querySelector(".input").value;
-            console.log('input is', input)
+            /*var input = document.querySelector(".input").value;*/
+            /*console.log('input is', input)*/
 
             if (splitHash[2] === "genre") {
                 console.log('in filter genre=',genre);
@@ -120,12 +119,12 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                             return data;
                         }
                    });
-            } else if (input.length > 0) {
+            /*} else if (input.length > 0) {
                 
                 var data = _.filter(data, function (data){
                     var title = data.title.toLowerCase();
                     _.contains(title, input)
-                });
+                });*/
 
                 /*var data = _.filter(data, function(data) {
                     console.log('in search function input = ', input, 'en data is', data);
@@ -136,8 +135,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                                 }
                             });*/
             }
-
             return data;
+            console.log('lastreturn',data);
         }
     };
 
