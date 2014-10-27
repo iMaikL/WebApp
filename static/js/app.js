@@ -77,10 +77,10 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
         },
 
-        /*moviesGenre: function(genre){
+        moviesGenre: function(genre){
             console.log('in moviesGenre', genre);
-            return  MOVIEAPP.underscore.changeData(genre);
-        }*/
+            return  MOVIEAPP.underscore.manipulateData(genre);
+        }
 
 	};
 
@@ -99,9 +99,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                 })  
             console.log('movie.reviews', data);
             return data;
-        }/*,
+        },
 
-		        filter: function (data, genre) {
+		    filter: function (data, genre) {
             var hash = window.location.hash;
             console.log(hash);
             var splitHash = hash.split("/");
@@ -134,14 +134,12 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                                 if (title.indexOf(input.toLowerCase()) !=-1) {
                                     return data;
                                 }
-                            });
+                            });*/
             }
 
             return data;
         }
-    };*/
-
-	};
+    };
 
 	//xhr object for API
 	MOVIEAPP.xhr = {
@@ -202,11 +200,11 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 					MOVIEAPP.sections.movie('film', id);
 					console.log("route movie id");
 					MOVIEAPP.sections.film();
-				}/*,
+				},
 
 				'/movies/genre/:genre': function(genre) {
-                    MOVIEAPPAPP.sections.renderMoviesGenre('movies', genre);*/
-
+                    MOVIEAPP.sections.movieGenre('movies', genre);
+                 }
 			});
 		},
 
@@ -265,12 +263,13 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
             return  MOVIEAPP.underscore.manipulateData(id);
         },
         //render the genres
-        /*renderMoviesGenre: function(route,genre) {
+        movieGenre: function(route,genre) {
             console.log('in renderMoviesGenre genre =', genre);
             console.log('render details');
             Transparency.render(qwery('[data-route=genre]')[0], MOVIEAPP.content.moviesGenre(genre), MOVIEAPP.directives);
-            movieAPP.sections.toggle(route);*/
-	};
+            MOVIEAPP.router.change(route);
+	}
+};
 
 	//DOM ready code
 	domready(function(){
@@ -281,17 +280,3 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 })();
 
-/*movies: function() {
-
-			var self = this;
-
-			MOVIEAPP.xhr.trigger("GET", "http://dennistel.nl/movies", self.moviesSucces, "JSON");
-		},
-
-		moviesSucces: function(text) {
-			console.log('Parsed data', JSON.parse(text));
-			MOVIEAPP.content.movies = JSON.parse(text);
-			console.log('Data from data object', MOVIEAPP.content.movies);
-
-			Transparency.render(document.getElementById('movies'), MOVIEAPP.content.movies);
-		}*/
