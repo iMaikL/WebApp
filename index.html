@@ -10,13 +10,23 @@
     </head>
     <body>
 
-
     	<header>
 			<nav>
 				<ul>
 					<li><a href="#/about">about</a></li>
 					<li><a href="#/movies">movies</a></li>
 				</ul>
+
+				<!--<ul>
+					<li><a href="#/movies">All Genres</a></li>
+					<li><a href="#/movies/genre/Horror">Horror</a></li>
+					<li><a href="#/movies/genre/Drama">Drama</a></li>
+					<li><a href="#/movies/genre/Crime">Crime</a></li>
+					<li><a href="#/movies/genre/Thriller">Thriller</a></li>
+					<li><a href="#/movies/genre/Action">Action</a></li>
+					<li><a href="#/movies/genre/Adventure">Adventure</a></li>
+				</ul>-->
+
 			</nav>
 		</header>
 
@@ -38,6 +48,9 @@
 				<article>
 					<header>
 						<h1 data-bind="title"></h1>
+						<ul class="genres">
+							<!--<span class="genre"></span>
+						</ul>-->
 						<em><time data-bind="release_date"></time></em>
 					</header>
 						<img class="image">
@@ -71,6 +84,7 @@
 		<script src="static/js/lib/qwery.min.js"></script>
 		<script src="static/js/lib/underscore.min.js"></script>
 		<script src="static/js/lib/transparancy.min.js"></script>
+		<script src="static/js/lib/hammer.min.js"></script>
         <script src="static/js/app.js"></script>
     </body>
 </html>

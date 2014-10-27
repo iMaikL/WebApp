@@ -30,7 +30,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			})*/
 		}
 	};
-
+ 
 	MOVIEAPP.check = {
         localStorage: function() {
             if (Modernizr.localstorage) {
@@ -73,9 +73,15 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 		},
 
-		film: function(id) {
-            return  MOVIEAPP.underscore.manipulateData(id);
-        }
+		film: {
+
+        },
+
+        /*moviesGenre: function(genre){
+            console.log('in moviesGenre', genre);
+            return  MOVIEAPP.underscore.changeData(genre);
+        }*/
+
 	};
 
 	MOVIEAPP.underscore = {
@@ -90,9 +96,51 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                     //movie.directors = _.reduce(movie.directors, function(memo, director){ return memo + director.name + ' '; }, '');
                     //movie.actors    = _.reduce(movie.actors,    function(memo, actor){    return memo + actor.actor_name + ', ';}, '');
                     //return movie;
-                    console.log('movie.reviews');
                 })  
+            console.log('movie.reviews', data);
+            return data;
+        }/*,
+
+		        filter: function (data, genre) {
+            var hash = window.location.hash;
+            console.log(hash);
+            var splitHash = hash.split("/");
+            //console.log(splitHash[2]);
+            //console.log(splitHash[2] === "genre");
+            console.log('in filter data =', data);
+            var input = document.querySelector(".input").value;
+            console.log('input is', input)
+
+            if (splitHash[2] === "genre") {
+                console.log('in filter genre=',genre);
+                    var data = _.filter(data, function (data) {
+
+                        if (_.contains(data.genres, genre)) {
+                            console.log(data);
+                            return data;
+                        }
+                   });
+            } else if (input.length > 0) {
+                
+                var data = _.filter(data, function (data){
+                    var title = data.title.toLowerCase();
+                    _.contains(title, input)
+                });
+
+                /*var data = _.filter(data, function(data) {
+                    console.log('in search function input = ', input, 'en data is', data);
+                                var title = data.title.toLowerCase();
+                                
+                                if (title.indexOf(input.toLowerCase()) !=-1) {
+                                    return data;
+                                }
+                            });
+            }
+
+            return data;
         }
+    };*/
+
 	};
 
 	//xhr object for API
@@ -153,8 +201,11 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 				'/movies/:id': function(id) {
 					MOVIEAPP.sections.movie('film', id);
 					console.log("route movie id");
-					MOVIEAPP.content.film;
-				}
+					MOVIEAPP.sections.film();
+				}/*,
+
+				'/movies/genre/:genre': function(genre) {
+                    MOVIEAPPAPP.sections.renderMoviesGenre('movies', genre);*/
 
 			});
 		},
@@ -208,7 +259,17 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			MOVIEAPP.content.film = JSON.parse(localStorage.getItem('movies'))[id];
 			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.film, MOVIEAPP.directives);
 			MOVIEAPP.router.change('movie-details');
-		}
+		},
+
+		film: function(id) {
+            return  MOVIEAPP.underscore.manipulateData(id);
+        },
+        //render the genres
+        /*renderMoviesGenre: function(route,genre) {
+            console.log('in renderMoviesGenre genre =', genre);
+            console.log('render details');
+            Transparency.render(qwery('[data-route=genre]')[0], MOVIEAPP.content.moviesGenre(genre), MOVIEAPP.directives);
+            movieAPP.sections.toggle(route);*/
 	};
 
 	//DOM ready code
