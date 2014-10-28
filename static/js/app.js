@@ -1,13 +1,11 @@
-//https://github.com/aproskam/Front-End2-201415/blob/master/WebApp%20-%20Eindopdracht/static/js/app.js
-
-//property:
-//method:
-//init: initialize
+//property: characteristics of an object
+//method: tasks/functions that the object performs
+//init: initialize: Naam van functie
 //xhr: xHTMLrequest
+
 
 //Global Scope
 //created MOVIAPP namespace
-
 var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 (function () { //Local scope
@@ -30,7 +28,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			})*/
 		}
 	};
- 
+ 	
+ 	//Set localStorage
 	MOVIEAPP.check = {
         localStorage: function() {
             if (Modernizr.localstorage) {
@@ -53,9 +52,6 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 					MOVIEAPP.router.init();
 				});
-
-                // no native support for HTML5 storage :(
-                // maybe try dojox.storage or a third-party solution
             }
         }
     };
@@ -64,6 +60,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 	MOVIEAPP.content = {
 
 		about: {
+			//about text
 			title:'about',
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus sollicitudin, pretium velit sit amet, facilisis orci. Aliquam nec feugiat turpis. Cras a nibh sit amet orci mattis sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet massa at condimentum cursus. Aliquam eu sagittis eros. Suspendisse lacinia fringilla pellentesque. Nullam sodales nisi vitae egestas commodo. Nullam tincidunt neque in euismod malesuada. Aliquam dui neque, porttitor ac est at, vulputate pellentesque orci. Sed ultrices pharetra magna, sit amet viverra libero sagittis non. Integer nunc arcu, viverra nec metus laoreet, venenatis lacinia lectus. Vestibulum pulvinar ultricies sapien, sit amet commodo felis euismod nec. In malesuada neque vitae nibh luctus maximus. Nam volutpat, erat sed fringilla facilisis, turpis lectus finibus velit, nec tristique ipsum sem vel lacus.'
 		},
@@ -86,6 +83,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 	};
 
+	//maak gebruik van de library underscore. Voegt reviews in 1 en zorgt dat genre gefilterd kan worden
 	MOVIEAPP.underscore = {
 
 		manipulateData: function(genre) {
@@ -95,8 +93,6 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
             //map reduce
             _.map(data, function (movie, i){
                     movie.reviews   = _.reduce(movie.reviews,   function(memo, review){   return memo + review.score; }, 0) / movie.reviews.length;
-                    //movie.directors = _.reduce(movie.directors, function(memo, director){ return memo + director.name + ' '; }, '');
-                    //movie.actors    = _.reduce(movie.actors,    function(memo, actor){    return memo + actor.actor_name + ', ';}, '');
                     return movie;
                 })  
 
@@ -165,7 +161,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
     };
 
 
-	//image content
+	//Geeft de cover en id door
 	MOVIEAPP.directives = {
 			image: {
 				src: function() {
@@ -258,7 +254,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 		movie: function(route, id){
 
-			//tegenstrijdig, ik haalde een oude 
+			//tegenstrijdig, ik haalde een oude versie op
 			//MOVIEAPP.content.film = JSON.parse(localStorage.getItem('movies'))[id];
 			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.film()[id], MOVIEAPP.directives);
 			MOVIEAPP.router.change('movie-details');
@@ -268,7 +264,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
             return  MOVIEAPP.underscore.manipulateData(id);
         },
 
-        //render the genres
+        //render genres
         movieGenre: function(route,genre) {
             console.log('in renderMoviesGenre genre =', genre);
             console.log('render details');

@@ -8,3 +8,16 @@ section.active, section.active > section{
 /*-------------------*/
 /*--Start real CSS---*/
 /*-------------------*/
+
+
+/*flexbox
+#wrapper {
+  display: flex;
+}
+
+nav {
+  width: 200px;
+}
+section {
+  display:flex;
+}
