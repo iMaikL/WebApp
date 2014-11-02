@@ -28,9 +28,9 @@ ul {
   margin:0;
 }
 
-ul:first-child {
+/*ul:first-child {
   background-color: #000;
-}
+}*/
 
 li {
   padding:20px;
@@ -47,9 +47,20 @@ li > a {
   text-decoration: none;
 }
 
-li > a:hover {
+/*li > a:hover {
   color: #000;
   background-color:#fff;
+}
+*/
+
+/*touchmenu*/
+#genreMenu {
+  display:none;
+  transition: display 1s;
+}
+
+#genreMenu.active {
+  display:flex;
 }
 
 /*Articles*/
@@ -80,13 +91,13 @@ article > img {
   margin-right:20px;
 }
 
-div {
+#samenvatting {
   display:flex;
   flex-flow:column;
   padding-right:10px;
 }
 
-div > a {
+#samenvatting > a {
   font-family: helvetica;
   text-decoration: none;
   color:#333;

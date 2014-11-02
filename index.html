@@ -11,13 +11,13 @@
     <body>
 
     	<header>
-			<nav>
-				<ul>
+			<nav id="navigation">
+				<ul id="mainMenu">
 					<li><a href="#/about">about</a></li>
 					<li><a href="#/movies">movies</a></li>
 				</ul>
 
-				<ul>
+				<ul id="genreMenu">
 					<li><a href="#/movies">All Genres</a></li>
 					<li><a href="#/movies/genre/Horror">Horror</a></li>
 					<li><a href="#/movies/genre/Drama">Drama</a></li>
@@ -48,7 +48,7 @@
 				<article>
 					<img class="image">
 
-					<div>
+					<div id="samenvatting">
 						<header>
 							<h1 data-bind="title"></h1>
 							<em><time data-bind="release_date"></time></em>
@@ -88,5 +88,7 @@
 		<script src="static/js/lib/transparancy.min.js"></script>
 		<script src="static/js/lib/hammer.min.js"></script>
         <script src="static/js/app.js"></script>
+
+        <script src="static/js/gesture.js"></script>
     </body>
 </html>

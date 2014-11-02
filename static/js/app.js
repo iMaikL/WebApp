@@ -266,6 +266,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 	}
 };
 
+
 	//DOM ready code
 	domready(function(){
 		//Start SCOREapplication
