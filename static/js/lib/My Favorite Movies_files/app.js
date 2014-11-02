@@ -19,6 +19,13 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			console.log("Start MOVIEapplicatie");
 
 			MOVIEAPP.check.localStorage();
+
+			/*pull data: schedule, game, ranking
+			MOVIEAPP.router.init();
+			//log and parse API data
+			MOVIEAPP.xhr.trigger("GET", "http://dennistel.nl/movies", function(data){
+			console.log('parsed data', JSON.parse(data));
+			})*/
 		}
 	};
  	

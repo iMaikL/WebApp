@@ -9,15 +9,136 @@ section.active, section.active > section{
 /*--Start real CSS---*/
 /*-------------------*/
 
-
-/*flexbox
-#wrapper {
-  display: flex;
+/*Navigatie*/
+body {
+  margin:0;
+  background-color: #6B91A1;
 }
 
 nav {
-  width: 200px;
+  display: flex;
+  background-color: #333;
+  flex-flow: column;
 }
-section {
+
+ul {
+  display: flex;
+  flex-flow: wrap;
+  padding:0;
+  margin:0;
+}
+
+ul:first-child {
+  background-color: #000;
+}
+
+li {
+  padding:20px;
+  list-style: none;
+  flex-grow:1;
+  text-align:center;
+}
+
+li > a {
+  padding:20px;
+  color: #aaa;
+  font-family: helvetica;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+li > a:hover {
+  color: #000;
+  background-color:#fff;
+}
+
+/*Articles*/
+
+#content {
+margin: 0px 25px 0px 25px;
+}
+
+section.active {
   display:flex;
+  flex-flow: wrap;
+  justify-content:space-around;
+}
+
+article {
+  margin: 2% 0;
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  width: 45%;
+  padding:0px;
+  background-color:#f1f1f1;
+}
+
+/*in article*/
+
+article > img {
+  float:left;
+  margin-right:20px;
+}
+
+div {
+  display:flex;
+  flex-flow:column;
+  padding-right:10px;
+}
+
+div > a {
+  font-family: helvetica;
+  text-decoration: none;
+  color:#333;
+  font-size: 18px;
+}
+
+/* about */
+
+section > header {
+  background-color: white;
+  padding:10px 20px;
+  margin: 2% 0;
+}
+
+/* mediaquerie for mobile*/
+
+@media screen and (max-width: 800px) {
+
+  section.active {
+    display:flex;
+    flex-direction:column;
+  }
+
+  article {
+    margin: 2% 0;
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    width: 100%;
+    padding:0px;
+    background-color:#f1f1f1;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  section.active {
+    display:flex;
+    flex-direction:column;
+  }
+
+  article {
+    margin: 2% 0;
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    width: 90%;
+    padding:20px;
+    background-color:#f1f1f1;
+  }
+
+  img {
+    display:none;
+  }
+
 }

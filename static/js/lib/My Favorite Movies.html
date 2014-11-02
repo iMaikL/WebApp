@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- saved from url=(0113)file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies/genre/Horror -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="description" content="Web App V1, basic JavaScript Skeleton">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Favorite Movies</title>
+        <link rel="stylesheet" href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/static/css/main.css">
+        <link rel="author" href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/humans.txt">
+    <style type="text/css"></style></head>
+    <body>
+
+    	<div id="wrapper">
+    	<header>
+			<nav>
+				<ul>
+					<li><a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/about">about</a></li>
+					<li><a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies">movies</a></li>
+				</ul>
+
+				<ul>
+					<li><a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies">All Genres</a></li>
+					<li><a href="./My Favorite Movies_files/My Favorite Movies.html">Horror</a></li>
+					<li><a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies/genre/Drama">Drama</a></li>
+					<li><a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies/genre/Crime">Crime</a></li>
+					<li><a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies/genre/Thriller">Thriller</a></li>
+					<li><a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies/genre/Action">Action</a></li>
+					<li><a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies/genre/Adventure">Adventure</a></li>
+				</ul>
+
+			</nav>
+		</header>
+
+
+		<main id="content">
+			<section data-route="about" class="">
+					<header>
+						<h1 data-bind="title"></h1>
+
+						<p data-bind="description"></p>
+						<p></p>
+						<p></p>
+						<p></p>
+
+					</header>
+			</section>
+
+			<section data-route="movies" class="active">
+				<article>
+					<header>
+						<h1 data-bind="title">Evil Dead</h1>
+						<em><time data-bind="release_date">5 April 2013</time></em>
+					</header>
+						<img class="image" src="./My Favorite Movies_files/MV5BNTQ3OTkwNTgyN15BMl5BanBnXkFtZTcwNTAzOTAzOQ@@._V1_SX214_.jpg">
+					<p data-bind="simple_plot">Five friends travel to a cabin in the woods, where they unknowingly release flesh-possessing demons.</p>
+
+					<a href="file:///Users/Klomp/Documents/Hogeschool%20van%20Amsterdam/FED2_herkansing/WebApp/index.html#/movies/0" data-bind="details">More info</a>
+				</article>
+			
+
+		
+			</section>
+
+			<section data-route="movie-details">
+				<article>
+					<header>
+						<h1 data-bind="title"></h1>
+						<h2 data-bind="reviews">Review score: <span data-bind="score"></span></h2>
+						<p>Release date: <time data-bind="release_date"></time></p>
+					</header>
+						<img data-bind="image">
+					<p><span>Plot: </span><span data-bind="plot"></span></p>
+				
+					<a href="" data-bind="movies">terug</a>
+				</article>
+			</section>
+		</main>
+		</div>
+
+<!--Add libraries-->
+		<script src="./My Favorite Movies_files/routie.min.js"></script>
+		<script src="./My Favorite Movies_files/ready.min.js"></script>
+		<script src="./My Favorite Movies_files/modernizr.js"></script>
+		<script src="./My Favorite Movies_files/qwery.min.js"></script>
+		<script src="./My Favorite Movies_files/underscore.min.js"></script>
+		<script src="./My Favorite Movies_files/transparancy.min.js"></script>
+		<script src="./My Favorite Movies_files/hammer.min.js"></script>
+        <script src="./My Favorite Movies_files/app.js"></script>
+    
+</body></html>
