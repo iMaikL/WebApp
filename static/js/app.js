@@ -3,18 +3,13 @@
 //init: initialize: Naam van functie
 //xhr: xHTMLrequest
 
-/*Verloop app
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
+/*flow:
+1: MOVIEAPP word gemaakt 
+2: Data word in localstorage gezet en zorgt dat die bruikbaar is
+3: routie ziet wat de persoon gekozen heeft
+4: transparency rendert de pagina op met content
+5: de change functie in router verandert de route en laat de pagina zien
 */
-
 
 //Global Scope
 //created MOVIAPP namespace
@@ -22,7 +17,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 (function () { //Local scope
 
-
+	//1
 	//Controller Init
 	MOVIEAPP.controller = {
 		init: function () {
@@ -34,6 +29,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		}
 	};
  	
+ 	//2
  	//Hier zorg ik ervoor dat de API data in de localStorage gezet wordt. 
  	//Hiermee laad de data aan het begin en hoeft de site daarna geen data meer op te halen
 	MOVIEAPP.check = {
@@ -182,6 +178,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 	MOVIEAPP.router = {
 		init:function () {
 
+			//3
+			//ziet wat de gebruiker heeft gekozen
 			routie({
 				'/about': function() {
 					MOVIEAPP.sections.about('about');
@@ -209,6 +207,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			});
 		},
 
+		//5 -> 
+		//de functie die zorgt dat de route verandert
 		change: function (route) {
 			
 			// anders de route uit de URL te houden.
@@ -235,6 +235,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		}
 	};
 
+	//4
 	//Hier gaan we alles bij elkaar brengen. Er wordt een section opgehaald.
 	//Doormiddel van een library; Transparency kan content gerenderd worden op het scherm bij een bepaalde route
 	MOVIEAPP.sections = {
