@@ -117,11 +117,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
             var hash = window.location.hash;
             console.log(hash);
             var splitHash = hash.split("/");
-            //console.log(splitHash[2]);
-            //console.log(splitHash[2] === "genre");
             console.log('in filter data =', data);
-            /*var input = document.querySelector(".input").value;*/
-            /*console.log('input is', input)*/
 
             if (splitHash[2] === "genre") {
                 console.log('in filter genre=',genre);
