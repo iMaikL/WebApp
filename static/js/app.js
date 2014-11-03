@@ -3,6 +3,18 @@
 //init: initialize: Naam van functie
 //xhr: xHTMLrequest
 
+/*Verloop app
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+*/
+
 
 //Global Scope
 //created MOVIAPP namespace
@@ -11,7 +23,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 (function () { //Local scope
 
 
-		//Controller Init
+	//Controller Init
 	MOVIEAPP.controller = {
 		init: function () {
 
@@ -22,7 +34,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		}
 	};
  	
- 	//Set localStorage
+ 	//Hier zorg ik ervoor dat de API data in de localStorage gezet wordt. 
+ 	//Hiermee laad de data aan het begin en hoeft de site daarna geen data meer op te halen
 	MOVIEAPP.check = {
         localStorage: function() {
             if (Modernizr.localstorage) {
@@ -49,15 +62,20 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
         }
     };
 
-	//data objecten
+	//Dit is het hart van de app, de content. Hier geef ik aan wat
+	//In deze content moet staan.
+	//Er wordt in de app vaak terug gegrepen naar deze functies.
+
 	MOVIEAPP.content = {
 
+		//content voor de about page
 		about: {
 			//about text
 			title:'about',
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus sollicitudin, pretium velit sit amet, facilisis orci. Aliquam nec feugiat turpis. Cras a nibh sit amet orci mattis sagittis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet massa at condimentum cursus. Aliquam eu sagittis eros. Suspendisse lacinia fringilla pellentesque. Nullam sodales nisi vitae egestas commodo. Nullam tincidunt neque in euismod malesuada. Aliquam dui neque, porttitor ac est at, vulputate pellentesque orci. Sed ultrices pharetra magna, sit amet viverra libero sagittis non. Integer nunc arcu, viverra nec metus laoreet, venenatis lacinia lectus. Vestibulum pulvinar ultricies sapien, sit amet commodo felis euismod nec. In malesuada neque vitae nibh luctus maximus. Nam volutpat, erat sed fringilla facilisis, turpis lectus finibus velit, nec tristique ipsum sem vel lacus.'
 		},
 
+		//wat moet er gebeuren in de movies page
 		movies: function (){
             var genre = '';
 
@@ -65,10 +83,12 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
         },
 
+		//een functie die een id meekrijgt waarin data per ID aangepast wordt.
         film: function(id) {
             return  MOVIEAPP.underscore.manipulateData(id);
         },
-
+	
+		//een genre waarin genre meegegeven wordt. Data wordt per genre aangepast.
         moviesGenre: function(genre){
             console.log('in moviesGenre', genre);
             return  MOVIEAPP.underscore.manipulateData(genre);
@@ -112,21 +132,6 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
                             return data;
                         }
                    });
-            /*} else if (input.length > 0) {
-                
-                var data = _.filter(data, function (data){
-                    var title = data.title.toLowerCase();
-                    _.contains(title, input)
-                });*/
-
-                /*var data = _.filter(data, function(data) {
-                    console.log('in search function input = ', input, 'en data is', data);
-                                var title = data.title.toLowerCase();
-                                
-                                if (title.indexOf(input.toLowerCase()) !=-1) {
-                                    return data;
-                                }
-                            });*/
             }
             return data;
             console.log('lastreturn',data);
@@ -134,6 +139,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
     };
 
 	//xhr object for API
+	//Dit object zorgt ervoor dat er data met een server uitgewisselt kan worden. 
+	//Send data, update data, request data, receive data
+
 	MOVIEAPP.xhr = {
         trigger: function (type, url, success, data) {
             var req = new XMLHttpRequest;
@@ -154,7 +162,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
     };
 
 
-	//Geeft de cover en id door
+	//De directives zorgen ervoor dat er links gekoppelt kunnen worden aan de html
+	//en dat de ID's gekoppeld worden aan de detailpagina
+
 	MOVIEAPP.directives = {
 			image: {
 				src: function() {
@@ -165,11 +175,14 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			details: {
 				href: function() {
                     return '#/movies/' + (this.id - 1); 
+				}
 			}
-		}
-	};
+		};
 
-	//router
+	//Roep de router aan. Hier ga ik content koppelen aan bepaale namen achter de link
+	//Hier zeg ik dus dat wanneer een link doorgezet moet worden er content opgehaald moet worden uit een andere functie.
+	//Dit gebeurt doormiddel van een library; Routie
+
 	MOVIEAPP.router = {
 		init:function () {
 
@@ -226,18 +239,23 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		}
 	};
 
-	//Page render
+	//Hier gaan we alles bij elkaar brengen. Er wordt een section opgehaald.
+	//Doormiddel van een library; Transparency kan content gerenderd worden op het scherm bij een bepaalde route
 	MOVIEAPP.sections = {
+		
 		init: function(){
 			this.about();
 			this.movies();
 			MOVIEAPP.directives();
 		},
+		
+		//render de about pagina	
 		about: function(route){
 			Transparency.render(qwery('[data-route=about]')[0], MOVIEAPP.content.about);
 			MOVIEAPP.router.change();
 		},
 
+		//render alle films
 		movies: function(route){
 
 			MOVIEAPP.content.movies = JSON.parse(localStorage.getItem('movies'));
@@ -245,14 +263,14 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			MOVIEAPP.router.change();
 		},
 
+		//render de detail pagina
 		movie: function(route, id){
 
-			//tegenstrijdig, ik haalde een oude versie op
-			//MOVIEAPP.content.film = JSON.parse(localStorage.getItem('movies'))[id];
 			Transparency.render(qwery('[data-route=movie-details]')[0], MOVIEAPP.content.film()[id], MOVIEAPP.directives);
 			MOVIEAPP.router.change('movie-details');
 		},
 
+		//zorg ervoor dat de review score klopt. 
 		film: function(id) {
             return  MOVIEAPP.underscore.manipulateData(id);
         },
