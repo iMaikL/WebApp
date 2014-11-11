@@ -11,3 +11,10 @@ Best practices voor het vak FrontEnd 2
 9. Begrijp de termen (of zet deze in je file) en lees veel over javascript
 
 In deze ReadMe heb ik geen best practices uit de les (zoals het gebruik van transparency en routie) meegenomen. Dit zijn best practices die voor mij als beginner erg belangrijk zijn. 
+
+flow:
+1: MOVIEAPP word gemaakt 
+2: Data word in localstorage gezet en zorgt dat die bruikbaar is
+3: routie ziet wat de persoon gekozen heeft
+4: transparency rendert de pagina op met content
+5: de change functie in router verandert de route en laat de pagina zien

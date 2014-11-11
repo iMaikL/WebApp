@@ -17,7 +17,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 
 (function () { //Local scope
 
-	//1
+//1
 	//Controller Init
 	MOVIEAPP.controller = {
 		init: function () {
@@ -29,9 +29,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		}
 	};
  	
- 	//2
- 	//Hier zorg ik ervoor dat de API data in de localStorage gezet wordt. 
- 	//Hiermee laad de data aan het begin en hoeft de site daarna geen data meer op te halen
+//2
+//Hier zorg ik ervoor dat de API data in de localStorage gezet wordt. 
+//Hiermee laad de data aan het begin en hoeft de site daarna geen data meer op te halen
 	MOVIEAPP.check = {
         localStorage: function() {
             if (Modernizr.localstorage) {
@@ -58,9 +58,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
         }
     };
 
-	//Dit is het hart van de app, de content. Hier geef ik aan wat
-	//In deze content moet staan.
-	//Er wordt in de app vaak terug gegrepen naar deze functies.
+//Dit is het hart van de app, de content. Hier geef ik aan wat
+//In deze content moet staan.
+//Er wordt in de app vaak terug gegrepen naar deze functies.
 
 	MOVIEAPP.content = {
 
@@ -130,9 +130,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
         }
     };
 
-	//xhr object for API
-	//Dit object zorgt ervoor dat er data met een server uitgewisselt kan worden. 
-	//Send data, update data, request data, receive data
+//xhr object for API
+//Dit object zorgt ervoor dat er data met een server uitgewisselt kan worden. 
+//Send data, update data, request data, receive data
 
 	MOVIEAPP.xhr = {
         trigger: function (type, url, success, data) {
@@ -154,8 +154,8 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
     };
 
 
-	//De directives zorgen ervoor dat er links gekoppelt kunnen worden aan de html
-	//en dat de ID's gekoppeld worden aan de detailpagina
+//De directives zorgen ervoor dat er links gekoppelt kunnen worden aan de html
+//en dat de ID's gekoppeld worden aan de detailpagina
 
 	MOVIEAPP.directives = {
 			image: {
@@ -171,14 +171,14 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			}
 		};
 
-	//Roep de router aan. Hier ga ik content koppelen aan bepaale namen achter de link
-	//Hier zeg ik dus dat wanneer een link doorgezet moet worden er content opgehaald moet worden uit een andere functie.
-	//Dit gebeurt doormiddel van een library; Routie
+//Roep de router aan. Hier ga ik content koppelen aan bepaale namen achter de link
+//Hier zeg ik dus dat wanneer een link doorgezet moet worden er content opgehaald moet worden uit een andere functie.
+//Dit gebeurt doormiddel van een library; Routie
 
 	MOVIEAPP.router = {
 		init:function () {
 
-			//3
+//3
 			//ziet wat de gebruiker heeft gekozen
 			routie({
 				'/about': function() {
@@ -207,7 +207,7 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 			});
 		},
 
-		//5 -> 
+//5 
 		//de functie die zorgt dat de route verandert
 		change: function (route) {
 			
@@ -235,9 +235,9 @@ var MOVIEAPP = MOVIEAPP || {}; //Namespace
 		}
 	};
 
-	//4
-	//Hier gaan we alles bij elkaar brengen. Er wordt een section opgehaald.
-	//Doormiddel van een library; Transparency kan content gerenderd worden op het scherm bij een bepaalde route
+//4
+//Hier gaan we alles bij elkaar brengen. Er wordt een section opgehaald.
+//Doormiddel van een library; Transparency kan content gerenderd worden op het scherm bij een bepaalde route
 	MOVIEAPP.sections = {
 		
 		init: function(){
